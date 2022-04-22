@@ -1,0 +1,108 @@
+<!--Author: Othon Lima-->
+<!--Date: 20220422-->
+<!--Title: CIS2286 - Assigment 6 Task Scheduler-->
+
+<template>
+  <div class="container">
+    <Header @delete-all="deleteAll" @add-task="addTask" />
+    <Tasks @delete-task="deleteTask" :tasks="tasks" />
+  </div>
+
+</template>
+
+<script>
+import Header from "@/components/Header";
+import Tasks from "@/components/Tasks";
+
+
+
+
+export default {
+  name: 'App',
+  components: {
+    Header,
+    Tasks,
+  },
+  data() {
+    return {
+      tasks: [],
+    }
+  },
+  methods: {
+    deleteTask(id) {
+      this.tasks = this.tasks.filter((task) => task.id !== id)
+    },
+    deleteAll() {
+      this.tasks = [];
+    },
+    addTask() {
+      let taskName = prompt("Enter task name: ");
+      let taskDate = prompt("Enter task date: ");
+
+      this.tasks.push({id: Math.floor(Math.random()*100000), text:taskName, day:taskDate, reminder:true});
+
+    }
+  },
+  created() {
+    this.tasks = [
+      {
+        id: 1,
+        text: 'CIS Final Test',
+        day: '2022-04-22',
+        reminder: true,
+      },
+      {
+        id: 2,
+        text: 'Go to the beach',
+        day: '2022-04-24',
+        reminder: true,
+      },
+    ]
+  }
+}
+</script>
+
+<!--Style got from https://www.youtube.com/watch?v=qZXt1Aom3Cs-->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+}
+.container {
+  max-width: 500px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 1px solid steelblue;
+  padding: 30px;
+  border-radius: 5px;
+}
+.btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}
+.btn:focus {
+  outline: none;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn-block {
+  display: block;
+  width: 100%;
+}
+</style>
