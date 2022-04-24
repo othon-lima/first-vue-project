@@ -1,19 +1,3 @@
 # cis2286_a6_oliveiralima_o
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+The project can be accessed at https://othon-lima.github.io/first-vue-project/index.html
